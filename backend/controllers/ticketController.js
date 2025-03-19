@@ -26,6 +26,20 @@ const getTicket = async (req, res) => {
   }
 };
 
+const getPrivateTicket =async(req,res)=>{
+    const {id} = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ message: "No Ticket with that id" });
+      }
+
+      try{
+            const ticket = await Ticket.findById(id);
+            res.status(200).json(ticket);
+      }catch(error){
+        res.status(500).json({message:"Error"})
+      }
+};
+
 const updateTicket = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -60,4 +74,4 @@ const deleteTicket = async (req, res) => {
   }
 };
 
-export { createTicket, getTicket, updateTicket, deleteTicket };
+export { createTicket, getTicket, updateTicket, deleteTicket , getPrivateTicket };
