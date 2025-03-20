@@ -1,4 +1,6 @@
 import express from "express";
+import authMiddleware from "../middleware/Authmiddleware.js";
+
 import {
   createTicket,
   getTicket,
@@ -8,10 +10,10 @@ import {
 } from "../controllers/ticketController.js";
 const router = express.Router();
 
-router.post("/", createTicket);
-router.get("/", getTicket);
-router.get('/:id' , getPrivateTicket);
-router.patch("/:id", updateTicket);
-router.delete("/:id", deleteTicket);
+router.post("/", authMiddleware, createTicket);
+router.get("/", authMiddleware, getTicket);
+router.get("/:id", authMiddleware, getPrivateTicket);
+router.patch("/:id", authMiddleware, updateTicket);
+router.delete("/:id", authMiddleware, deleteTicket);
 
 export default router;
