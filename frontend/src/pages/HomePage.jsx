@@ -1,9 +1,11 @@
 import React from 'react'
+import HomeHeader from '../components/HomeHeader'
 
 function HomePage() {
   return (
     <div>
-        <h1 className='text-4xl hover:text-red-500 text-blue-500'>CHECK ME</h1>
+      <HomeHeader/>
+      
       
     </div>
   )
