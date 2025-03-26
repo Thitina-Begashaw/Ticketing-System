@@ -4,24 +4,29 @@ function Features() {
   const features = [
     {
       title: "Easy Ticket Creation",
-      description: "Users can quickly submit support tickets with essential details ensuring a smooth issue-reporting process."
+      description:
+        "Users can quickly submit support tickets with essential details ensuring a smooth issue-reporting process.",
     },
     {
       title: "Automated Ticket Assignment",
-      description: "Tickets are automatically assigned to the appropriate support agents based on priority, category, or workload, improving efficiency."
+      description:
+        "Tickets are automatically assigned to the appropriate support agents based on priority, category, or workload, improving efficiency.",
     },
     {
       title: "Real-Time Status Tracking",
-      description: "Users and support staff can monitor ticket progress with live updates, providing transparency and better issue resolution timelines."
+      description:
+        "Users and support staff can monitor ticket progress with live updates, providing transparency and better issue resolution timelines.",
     },
     {
       title: "Multi-Channel Support",
-      description: "Customers can submit tickets through various channels like email, chat, or a web portal, making it more accessible and user-friendly."
+      description:
+        "Customers can submit tickets through various channels like email, chat, or a web portal, making it more accessible and user-friendly.",
     },
     {
       title: "Detailed Reporting & Analytics",
-      description: "Gain insights into response times, resolution rates, and ticket trends to optimize support operations and enhance user satisfaction."
-    }
+      description:
+        "Gain insights into response times, resolution rates, and ticket trends to optimize support operations and enhance user satisfaction.",
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,7 +80,9 @@ function Features() {
           <h2 className="text-2xl font-bold text-green-700 mb-3 ">
             {features[currentIndex].title}
           </h2>
-          <p className="text-xl text-gray-500">{features[currentIndex].description}</p>
+          <p className="text-xl text-gray-500">
+            {features[currentIndex].description}
+          </p>
         </div>
       </div>
 
