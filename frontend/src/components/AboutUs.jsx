@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutUs() {
   return (
-    <div className="bg-gray-100 p-20">
+    <div className="bg-gray-100 p-20" id="about">
       <h1 className="text-3xl font-bold text-green-500 text-center  ">About</h1>
       <h2 className="text-xl font-bold text-center mt-5">
         Empowering Seamless Support with Advanced Ticketing Solutions

@@ -1,11 +1,10 @@
 import AuthBg from "../assets/AuthBg.webp";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Signup() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { setUser, setToken } = useContext(AuthContext);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,7 +21,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(null);  // Clear previous errors
+    setError(null); // Clear previous errors
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match!");
@@ -30,16 +29,14 @@ function Signup() {
     }
 
     try {
- 
-
       const res = await fetch(`/api/user/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          password: formData.password
-        })
+          password: formData.password,
+        }),
       });
 
       const data = await res.json();
@@ -48,7 +45,7 @@ function Signup() {
         localStorage.setItem("token", data.token);
         setUser(data.user);
         setToken(data.token);
-        navigate("/");
+        // navigate("/");
       } else {
         setError(data.error);
       }
@@ -58,14 +55,14 @@ function Signup() {
     }
   };
 
-
   return (
-    <div className="">
+    <div className="relative flex justify-center items-center h-full">
       <img className="h-[800px]" src={AuthBg} alt="" />
       <div className="w-[500px] h-[700px] bg-white rounded-2xl absolute top-20 left-96">
         <h1 className="text-3xl font-bold text-center m-8 p-5">
           Create Your Account
         </h1>
+        {error && <p className="text-red-500 text-center">{error}</p>}
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center justify-center "
@@ -73,31 +70,41 @@ function Signup() {
         >
           <input
             className="border-gray-300 border-2 w-96 p-2 m-3 rounded-3xl"
+            name="name"
             type="text"
+            value={formData.name}
             placeholder="Full Name"
             onChange={handleChange}
           />
           <input
             className="border-gray-300 border-2 w-96 p-2 m-3 rounded-3xl"
+            name="email"
             type="text"
+            value={formData.email}
             placeholder="Email"
             onChange={handleChange}
           />
           <input
             className="border-gray-300 border-2 w-96 p-2 m-3 rounded-3xl"
-            type="text"
+            type="password"
+            name="password"
+            value={formData.password}
             placeholder="Password"
             onChange={handleChange}
           />
           <input
             className="border-gray-300 border-2 w-96 p-2 m-3 rounded-3xl"
+            name="confirmPassword"
             type="text"
+            value={formData.confirmPassword}
             placeholder="Confirm Password"
             onChange={handleChange}
           />
           <select
             className="border-gray-300 border-2 w-96 p-2 m-3 rounded-3xl text-gray-400"
-            value=""  onChange={handleChange}
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
           >
             <option value="" disabled selected hidden>
               Select Role
@@ -111,12 +118,15 @@ function Signup() {
         </form>
         <div className="flex flex-row ml-16 mt-5 gap-1">
           <p className="text-sm text-gray-400">Already have an account? </p>
-          <a
-            className="text-sm hover:underline text-green-500 "
-            href="loaclhost/signup"
-          >
-            Sign in
-          </a>
+
+          <Link to="/login">
+            <a
+              className="text-sm hover:underline text-green-500 "
+              href="loaclhost/signup"
+            >
+              Sign in
+            </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import AboutUs from '../components/AboutUs'
 import Footer from '../components/Footer'
 function HomePage() {
   return (
-    <div>
+    <div id='home'>
       <HomeHeader/>
       <HomeBody1/>
       <Features/>

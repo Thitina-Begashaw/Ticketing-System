@@ -1,5 +1,6 @@
 import React from "react";
 import SupportPic from "../assets/Support2.jpg";
+import { Link } from "react-router-dom";
 function HomeBody1() {
   return (
     <div className=" bg-gray-100  h-screen shadow-sm mt-7">
@@ -14,9 +15,11 @@ function HomeBody1() {
           seamlessly manage and track issues, ensuring <br /> streamlined
           operations and quicker resolutions.
         </p>
-        <button className="bg-green-500 text-white hover:bg-green-800 border-2 px-4 py-2 mt-10 shadow-lg">
-          Get Started
-        </button>
+        <Link to="/login">
+          <button className="bg-green-500 text-white hover:bg-green-800 border-2 px-4 py-2 mt-10 shadow-lg">
+            Get Started
+          </button>
+        </Link>
       </div>
 
       <div className="w-[500px] h-64 float-right mr-20 ">
