@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const ticketSchema = new mongoose.Schema(
   {
     userId: {
-        type: String,
-        required: false, // note
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
       },
     title: {
       type: String,
