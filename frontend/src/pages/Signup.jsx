@@ -2,8 +2,9 @@ import AuthBg from "../assets/AuthBg.webp";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Signup() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { setUser, setToken } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: "",
@@ -29,7 +30,7 @@ function Signup() {
     }
 
     try {
-      const res = await fetch(`/api/user/register`, {
+      const res = await fetch("http://localhost:5000/api/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -45,7 +46,8 @@ function Signup() {
         localStorage.setItem("token", data.token);
         setUser(data.user);
         setToken(data.token);
-        // navigate("/");
+        navigate("/user");
+        
       } else {
         setError(data.error);
       }
@@ -112,9 +114,13 @@ function Signup() {
             <option value="User">User</option>
             <option value="Admin">Admin</option>
           </select>
-          <button className="border-2 bg-green-500 text-white w-96 p-2 m-5 rounded-3xl hover:bg-green-700">
+       
+          <button type="submit" className="border-2 bg-green-500 text-white w-96 p-2 m-5 rounded-3xl hover:bg-green-700">
             Create Account
           </button>
+         
+
+        
         </form>
         <div className="flex flex-row ml-16 mt-5 gap-1">
           <p className="text-sm text-gray-400">Already have an account? </p>
