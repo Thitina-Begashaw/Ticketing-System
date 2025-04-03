@@ -60,7 +60,10 @@ function Features() {
   };
 
   return (
-    <div className="bg-green-100 p-10 min-h-screen flex flex-col items-center " id="features" >
+    <div
+      className="bg-green-100 p-10 min-h-screen flex flex-col items-center "
+      id="features"
+    >
       <h1 className="text-3xl text-center font-extrabold mb-8">
         Key Features of a Ticketing System
       </h1>
